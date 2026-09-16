@@ -1,0 +1,202 @@
+<html>
+
+<head>
+<script>(function(){if(!document.createElement||!window.addEventListener)return;var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Verdana&family=Tahoma&family=Arial+Black&family=Comic+Sans+MS&family=Times+New+Roman&family=Courier+New&display=swap';document.getElementsByTagName('head')[0].appendChild(l);})();</script>
+<script>Date.prototype.getYear=function(){return this.getFullYear()};</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>menu</title>
+<base target="principal">
+<script LANGUAGE="JavaScript">
+var i = 0;
+var TextNumber = 0;
+var TextInput = new Object();
+var HelpText="";
+var Text = "";
+var Speed=150   
+var WaitSpace="      "
+TextInput[0] = 'Bem vindo ao site do Avanhandava!!!!';  
+TextInput[1] = "Obrigado por nos visitar!!!!"
+TextInput[2] = "Volte sempre!!!! "
+TextInput[3] = "Este site esta em constante atualização!!!!"
+TotalTextInput = 3; // (0, 1)
+
+for (var Tomer = 0; Tomer <= TotalTextInput; Tomer++) {
+        TextInput[Tomer]+=WaitSpace
+}
+
+
+        
+var TimerId
+var TimerSet=false;
+
+function startBanner ()  {
+        TimerSet=!TimerSet
+        if (TimerSet)
+                banner();
+        else
+                kill();
+}
+
+function banner() {
+        Text=rollMessage();
+        TimerId = setTimeout("banner()", Speed)
+        window.status=Text;
+                
+}
+
+function rollMessage () {
+        Wait_yn=false;
+        i++;
+        var CheckSpace = HelpText.substring(i-1, i);
+        CheckSpace = "" + CheckSpace;
+        if (CheckSpace == " ") {i++;}
+        if (i >= HelpText.length+1) {i=0; if (TextNumber < TotalTextInput) {TextNumber++;} else {TextNumber = 0;} init();}
+        Text = HelpText.substring(0, i);
+        return (Text);
+}
+
+function init () {
+        Text = TextInput[TextNumber]
+        HelpText = Text;
+}
+
+function kill () {
+        clearTimeout (TimerId)
+}
+
+
+
+
+</script>
+<style fprolloverstyle>A:hover {color: #FFFFFF; font-style: italic; font-weight: bold}
+</style>
+<meta name="generator" content="Microsoft FrontPage 5.0">
+</head>
+
+<body background="images/menusuperior7.gif" topmargin="0" leftmargin="0" link="#FFFFFF"
+vlink="#FFFFFF" alink="#C0C0C0" onLoad="init(); startBanner();">
+<div align="right">
+
+<table border="0" width="48%" bgcolor="#000080" cellspacing="0" height="1" cellpadding="0"
+align="right">
+  <tr>
+    <td width="2%" valign="bottom" height="1" align="right">
+    <img border="0"
+    src="images/cantomenu.gif" width="16" height="19"></td>
+    <td width="4%" valign="middle" height="1" align="right"><a href="indice.htm"><font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1"
+    color="#FFFFFF">Home</font></a><font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1"
+    color="#FFFFFF">&nbsp;</font></td>
+    <td width="7%" valign="middle" height="1" align="right">
+    <font size="1" color="#FFFFFF"><font face="Arial, Arimo, 'Liberation Sans', sans-serif"><a href="ecoava.htm">EcoAva</a>&nbsp;</font></font></td>
+    <td width="6%" valign="middle" height="1" align="right">
+    <font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1" color="#FFFFFF">
+    <a href="http://www2.avanhandava.org/chat2/chat.html">AvaChat</a></font></td>
+    <td width="6%" valign="middle" height="1" align="right">
+    <font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1" color="#FFFFFF"><a href="avamail.htm">Avamail</a>&nbsp;</font></td>
+    <td width="9%" valign="middle" height="1" align="right">
+    <font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1" color="#FFFFFF"><a
+    href="guestbook.htm">Guestbook</a>&nbsp;</font></td>
+    <td width="1%" nowrap valign="middle" height="1" align="right">
+    <font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1" color="#FFFFFF"><a href="escotismo.htm">
+    Escautismo</a></font></td>
+    <td width="0%" nowrap valign="middle" height="1" align="right">
+    <font face="Arial, Arimo, 'Liberation Sans', sans-serif" size="1" color="#FFFFFF"><a href="judaismo/judaismo.htm">Judaísmo</a>&nbsp;</font></td>
+    <td width="1%" nowrap valign="middle" height="1" align="right">
+    <font size="1" color="#FFFFFF"><font face="Arial, Arimo, 'Liberation Sans', sans-serif">
+    <a href="fotos/index.htm">Fotos</a>&nbsp;</font></font></td>
+    <td width="6%" nowrap valign="middle" height="1" align="right">
+    <font size="1" color="#FFFFFF"><font face="Arial, Arimo, 'Liberation Sans', sans-serif"><a href="quemsomos.htm">Quem somos</a>&nbsp;</font></font></td>
+    <td width="12%" nowrap valign="middle" height="1" align="right">
+    <font size="1" color="#FFFFFF"><font face="Arial, Arimo, 'Liberation Sans', sans-serif"><a href="links.htm">Links</a>&nbsp;</font></font></td>
+    <td width="12%" nowrap valign="middle" height="1" align="right"><font face="Arial, Arimo, 'Liberation Sans', sans-serif"
+    size="1" color="#FFFFFF"><a href="madrich/index.htm" target="principal">Madrich</a></font></td>
+    <td width="53%" nowrap valign="middle" height="1" align="right"><a href="creditos.htm"><font face="Arial, Arimo, 'Liberation Sans', sans-serif"
+    size="1" color="#FFFFFF">Créditos</font></a></td>
+    <td width="52%" nowrap valign="middle" height="1" align="right">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<div align="right">
+
+<table border="0" width="41%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%"><script>
+<!--
+dateObj = new Date();
+	var CurrentDay = dateObj.getDay();
+
+
+	if (CurrentDay == 0 )
+		document.write ("Domingo, ");
+	if (CurrentDay == 1 )
+		document.write ("Segunda-Feira, ")
+	if (CurrentDay == 2 )
+		document.write ("Terça-Feira, ")
+	if (CurrentDay == 3 )
+		document.write ("Quarta-Feira, ")
+	if (CurrentDay == 4 )
+		document.write ("Quinta-Feira, ")
+	if (CurrentDay == 5 )
+		document.write ("Sexta-Feira, ")
+	if (CurrentDay == 6 )
+		document.write ("Sábado, ")
+	
+
+	var CurrentDay = dateObj.getDate();
+	document.write (CurrentDay + " de ");
+
+	var CurrentDay = dateObj.getMonth();
+
+	if (CurrentDay == 0 )
+		document.write ("Janeiro de ");
+	if (CurrentDay == 1 )
+		document.write ("Fevereiro de ")
+	if (CurrentDay == 2 )
+		document.write ("Março de ")
+	if (CurrentDay == 3 )
+		document.write ("Abril de ")
+	if (CurrentDay == 4 )
+		document.write ("Maio de ")
+	if (CurrentDay == 5 )
+		document.write ("Junho de ")
+	if (CurrentDay == 6 )
+		document.write ("Julho de, ")
+	if (CurrentDay == 7 )
+		document.write ("Agosto de ");
+	if (CurrentDay == 8 )
+		document.write ("Setembro de ")
+	if (CurrentDay == 9 )
+		document.write ("Outubro de ")
+	if (CurrentDay == 10 )
+		document.write ("Novembro de ") 
+	if (CurrentDay == 11 )
+		document.write ("Dezembro de ")
+
+	var CurrentDay = dateObj.getYear();
+	document.write (CurrentDay);
+// -->
+    </script></td>
+  </tr>
+</table>
+</div>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><br>
+<br>
+<!-- Start of TheCounter.com Code --><script><!--
+s="na";c="na";j="na";f=""+escape(document.referrer)
+//--></script> <script language="javascript1.2"><!--
+s=screen.width;v=navigator.appName
+if (v != "Netscape") {c=screen.colorDepth}
+else {c=screen.pixelDepth}
+j=navigator.javaEnabled()
+//--></script> <!-- removed: dead hit counter -->  <!-- End of TheCounter.com Code --> </p>
+</body>
+</html>

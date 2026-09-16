@@ -1,0 +1,398 @@
+<html>
+
+<head>
+<script>(function(){if(!document.createElement||!window.addEventListener)return;var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&family=Verdana&family=Tahoma&family=Arial+Black&family=Comic+Sans+MS&family=Times+New+Roman&family=Courier+New&display=swap';document.getElementsByTagName('head')[0].appendChild(l);})();</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Sem título</title>
+<base target="foto">
+<meta name="generator" content="Namo WebEditor v5.0(Trial)">
+<script language="JavaScript">
+<!--
+function namosw_list(parent, visible, width, height, font, size, fgColor, bgColor, indent, hbgColor, hfgColor) {
+  this.additem = namosw_l_additem;
+  this.addlist = namosw_l_addlist;
+  this.make    = namosw_l_make;
+  this.write   = namosw_l_write;
+  this.show    = namosw_l_show;
+  this.update  = namosw_l_update;
+  this.updateparent = namosw_l_updateparent;
+  this.items = new Array();
+  this.id = document.namosw_lists.length;
+  this.parent_id = 0;
+  this.x = 0;
+  this.y = 0;
+  this.visible = visible;
+  this.width    = width;
+  this.height   = height;
+  this.parent   = parent;
+  this.indent = indent;
+  this.fgColor = fgColor;
+  this.hfgColor = hfgColor;
+  this.bgColor  = bgColor;
+  this.hbgColor = hbgColor;
+
+  this.font_start = '';
+  this.font_end   = '';
+
+  this.font_start = '<font color=' + fgColor;
+  if (font != '') this.font_start += ' face=\"' + font + '\"';
+  if (size != '' && size.indexOf('pt', 0) == -1) this.font_start += ' size=' + size;
+  this.font_start += '>';
+
+  this.font_start += '<span';
+  if (size.indexOf('pt', 0) != -1)
+    this.font_start += ' style="font-size:' +size+ ';"';
+  this.font_start += '>';
+
+  this.font_end  = '</span>';
+  this.font_end += '</font>';
+
+  this.made     = false;
+  this.shown    = false;
+  document.namosw_lists[document.namosw_lists.length] = this;
+}
+
+function namosw_l_setclip(layer, left, right, top, bottom) {
+  if (navigator.appName.indexOf('Netscape', 0) != -1) {
+    layer.clip.left   = left; 
+    layer.clip.right  = right;
+    layer.clip.top    = top;  
+    layer.clip.bottom = bottom;
+  } else {    
+    layer.style.pixelWidth  = right-left;
+    layer.style.pixelHeight = bottom-top;
+    layer.style.clip  = "rect(" + top + "," + right + "," + bottom + "," + left + ")";
+  }
+}
+
+function namosw_l_write() {
+  var layer, clip, str;
+  for(var i = 0; i < this.items.length; i++) { 
+    layer = this.items[i];
+    if (navigator.appName.indexOf('Netscape', 0) != -1) 
+      layer.visibility = "hidden";
+    else 
+      layer.style.visibility = "hidden";
+    str = "";
+
+    str += "<table width="+this.width+" nowrap border='0' cellpadding='0' cellspacing='0'><tr>";
+    if (0 < this.indent) str += "<td width="+this.indent+" nowrap>&nbsp;</td>";
+    if (layer.type == 'list') {
+      str += "<td width=15  valign='middle' nowrap><a";
+      if (navigator.appName.indexOf('Netscape', 0) != -1) str += " href=\"javascript:void(0);\"";
+      else                                                str += " style=\"cursor:hand;\"";
+      str += " onclick=\"namosw_l_expand("+layer.list.id+");\"><img src=\"collapsed.gif\" name=\"_img"+layer.list.id+"\" border='0'></a></td>";
+    } else {
+      str += "<td width=15 nowrap>&nbsp;</td>";
+    }
+    str += "<td height="+(this.height-3)+" width="+(this.width-15-this.indent)+" valign='middle' align='left'>";
+
+    if (layer.url)       str += "<a href=\"" + layer.url + "\" target=\"" + layer.frame + "\" style=\"text-decoration:none;\">";
+    if (this.font_start) str += this.font_start;
+    str += layer.text;
+    if (this.font_end) str += this.font_end;
+    if (layer.url)       str += "</a>";
+    str += "</td></table>";
+
+    str = str.replace("span", "span id='namoswlistspan" + layer.lid + "'");
+
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      layer.document.writeln(str);
+      layer.document.close();
+    } else {
+      layer.innerHTML = str;
+      layer.span = document.all['namoswlistspan'+layer.lid];
+    }
+    if (layer.type == 'list' && layer.list.visible)
+      this.items[i].list.write();
+  }
+  this.made = true;
+}
+
+function namosw_l_show() {
+  var layer;
+  for(var i = 0; i < this.items.length; i++) { 
+    layer = this.items[i];
+    namosw_l_setclip(layer, 0, this.width, 0, this.height-1);
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      if (layer.oBgColor) layer.document.bgColor = layer.oBgColor;
+      else layer.document.bgColor = this.bgColor;
+    } else {
+      if (layer.oBgColor) layer.style.backgroundColor = layer.oBgColor;
+      else layer.style.backgroundColor = this.bgColor;
+    }
+    if (layer.type == 'list' && layer.list.visible)
+      layer.list.show();
+  }
+  this.shown = true;
+}
+
+function namosw_l_update(parent_visible, x, y) {
+  var top = y, layer, list;
+  for(var i = 0; i < this.items.length; i++) { 
+    layer = this.items[i];
+    list  = layer.list;
+    if (this.visible && parent_visible) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+	layer.visibility = "visible";
+	layer.top = top;
+	layer.left = x;
+      } else {
+	layer.style.visibility = "visible";
+	layer.style.pixelTop   = top;
+	layer.style.pixelLeft  = x;	
+//	if (layer.url) layer.style.cursor = "hand";
+      }
+      top += this.height;
+    } else {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) layer.visibility = "hidden";
+      else layer.style.visibility = "hidden";
+    }
+    if (layer.type == 'list') {
+      if (list.visible) {
+        if (!list.made)  list.write();
+        if (!list.shown) list.show();
+        if (navigator.appName.indexOf('Netscape', 0) != -1) layer.document.images[0].src = "collapsed.gif";
+	else eval('document.images._img'+list.id+'.src = "collapsed.gif"');
+      } else {
+	if (navigator.appName.indexOf('Netscape', 0) != -1) layer.document.images[0].src = "expanded.gif";
+	else eval('document.images._img'+list.id+'.src = "expanded.gif"');
+      }
+      if (list.made)
+        top = list.update(this.visible && parent_visible, x, top);
+    }
+  }
+  return top;
+}
+
+function namosw_l_updateparent(parent_id) {
+  this.parent_id = parent_id;
+  for(var i = 0; i < this.items.length; i++)
+    if (this.items[i].type == 'list')
+      this.items[i].list.updateparent(parent_id);
+}
+
+function namosw_l_expand(i) {
+  document.namosw_lists[i].visible = !document.namosw_lists[i].visible;
+  list = document.namosw_lists[document.namosw_lists[i].parent_id];
+  list.update(true, list.x, list.y);
+}
+
+function namosw_l_make(x, y) {
+  this.updateparent(this.id);
+  this.write();
+  this.show();
+  this.update(true, x, y);
+  this.x = x; 
+  this.y = y;
+}
+
+function namosw_l_additem(text, url, frame) {
+  var layer = null;
+  if (navigator.appName.indexOf('Netscape', 0) != -1 && this.parent)
+    layer = eval('this.parent.document.layers.namoswlistitem'+document.namosw_lists.lid);
+  else
+    layer = eval('document.all.namoswlistitem'+document.namosw_lists.lid);
+  if (layer == null) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) 
+      layer = this.parent ? new Layer(this.width, this.parent) : new Layer(this.width);
+  }
+  if (layer == null) return;
+
+  if (url)   layer.url   = url;
+  if (frame) {
+    if (frame.indexOf('parent.') != 0)
+      layer.frame = "_" + frame;
+    else
+      layer.frame = frame.substring(7, frame.length);
+  }
+  layer.type = 'item';
+  layer.text = text;
+  layer.lid  = document.namosw_lists.lid;
+  this.items[this.items.length] = layer;
+  layer.hbgColor = this.hbgColor;
+  layer.oBgColor = this.bgColor;
+  layer.fgColor = this.fgColor;
+  layer.hfgColor = this.hfgColor;
+  if (layer.captureEvents)
+    layer.captureEvents(Event.MOUSEOVER|Event.MOUSEOUT|Event.MOUSEUP);
+  layer.onmouseover = namosw_l_onmouseover;
+  layer.onmouseout  = namosw_l_onmouseout;
+//  layer.onmouseup   = namosw_l_onmouseup;
+  document.namosw_lists.lid++;
+}
+
+function namosw_l_addlist(list, text, url, frame) {
+  var layer = null;
+
+  if (navigator.appName.indexOf('Netscape', 0) != -1 && this.parent)
+    layer = eval('this.parent.document.layers.namoswlistitem'+document.namosw_lists.lid);
+  else
+    layer = eval('document.all.namoswlistitem'+document.namosw_lists.lid);
+  if (layer == null) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) 
+      layer = this.parent ? new Layer(this.width, this.parent) : new Layer(this.width);
+  }
+  if (layer == null) return;
+
+  if (url)   layer.url   = url;
+  if (frame) {
+    if (frame.indexOf('parent.') != 0)
+      layer.frame = "_" + frame;
+    else
+      layer.frame = frame.substring(7, frame.length);
+  }
+  layer.list = list;
+  layer.type = 'list';
+  layer.text = text;
+  layer.lid  = document.namosw_lists.lid;
+  this.items[this.items.length] = layer;
+  list.parent = this;
+  layer.hbgColor = this.hbgColor;
+  layer.oBgColor = this.bgColor;
+  layer.fgColor = this.fgColor;
+  layer.hfgColor = this.hfgColor;
+  if (layer.captureEvents)
+    layer.captureEvents(Event.MOUSEOVER|Event.MOUSEOUT|Event.MOUSEUP);
+  layer.onmouseover = namosw_l_onmouseover;
+  layer.onmouseout  = namosw_l_onmouseout;
+//  layer.onmouseup   = namosw_l_onmouseup;
+  document.namosw_lists.lid++;
+}
+
+function namosw_l_onmouseover()
+{
+  if (navigator.appName.indexOf('Netscape', 0) != -1) {
+    if (this.hbgColor)
+      this.bgColor = this.hbgColor;
+  } else {
+    if (this.hbgColor) this.style.backgroundColor = this.hbgColor;
+    if (this.hfgColor) this.span.style.color = this.hfgColor;
+  }
+  if (this.url) self.status = this.url;
+}
+
+function namosw_l_onmouseout()
+{
+  if (navigator.appName.indexOf('Netscape', 0) != -1) {
+    this.bgColor = this.oBgColor;
+  } else  {
+    this.style.backgroundColor = this.oBgColor;
+    this.span.style.color = this.fgColor;
+  }
+  if (this.url) self.status = '';
+}
+
+function namosw_l_onmouseup()
+{
+  if (this.url) {
+    if (this.frame == 'blank') {
+      window.open(this.url, 'win1');
+    } else {
+      var frame_obj;
+      if ((frame_obj = eval(this.frame)) != null)
+        frame_obj.location = this.url;
+    }
+  }
+}
+
+function namosw_init_list(top_layer)
+{
+  if (parseInt(navigator.appVersion) < 4)
+    return;
+  if (top_layer == '')
+    return;
+
+  document.namosw_lists     = new Array();
+  document.namosw_lists.lid = 0;
+
+  var layer;
+  if (navigator.appName.indexOf('Netscape', 0) != -1)
+    layer = document.layers[top_layer];
+  else
+    layer = document.all[top_layer];
+
+  var string = "";
+  for (i = 0; i < 45; i++) {
+    string = string + "<div id='namoswlistitem" + (document.namosw_lists.lid+i) + "' " +
+                      "style='position: absolute;'></div>";
+  }
+  layer.innerHTML += string;
+
+  l1 = new namosw_list(layer, true, 200, 22, 'Arial', '1', 'black', 'gray', 0);
+    l2 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l2.additem('1', 'acampofe04%20(1).htm', 'parent.menufotos');
+    l2.additem('2', 'acampofe04%20(2).htm', 'self');
+    l2.additem('3', 'acampofe04%20(3).htm', 'self');
+    l2.additem('4', 'acampofe04%20(4).htm', 'self');
+    l2.additem('5', 'acampofe04%20(5).htm', 'self');
+  l1.addlist(l2, 'Acampo De Férias 04', 'menu%20(8).htm', 'parent.lobozoo');
+    l3 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l3.additem('1', 'vigifada03.htm', 'self');
+    l3.additem('2', 'vigifada03%20(1).htm', 'self');
+    l3.additem('3', 'vigifada03%20(2).htm', 'self');
+    l3.additem('4', 'vigifada03%20(3).htm', 'self');
+  l1.addlist(l3, 'Noite de vigilia de fada 03', 'menu%20(9).htm', 'self');
+    l4 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l4.additem('1', 'acampofe03.htm', 'parent.menufotos');
+    l4.additem('2', 'acampofe03%20(1).htm', 'self');
+    l4.additem('3', 'acampofe03%20(2).htm', 'self');
+    l4.additem('4', 'acampofe03%20(3).htm', 'self');
+    l4.additem('5', 'acampofe03%20(4).htm', 'self');
+    l4.additem('6', 'acampofe03%20(5).htm', 'self');
+    l4.additem('7', 'acampofe03%20(6).htm', 'self');
+    l4.additem('8', 'acampofe03%20(7).htm', 'self');
+    l4.additem('9', 'acampofe03%20(8).htm', 'self');
+    l4.additem('10', 'acampofe03%20(9).htm', 'parent.menufotos');
+  l1.addlist(l4, 'Acampo De Férias julho', 'menu%20(7).htm', 'parent.lobozoo');
+    l5 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l5.additem('1', 'lobozoo.htm', 'parent.menufotos');
+    l5.additem('2', 'lobozoo%20(1).htm', 'parent.menufotos');
+    l5.additem('3', 'lobozoo%20(2).htm', 'parent.menufotos');
+    l5.additem('4', 'lobozoo%20(3).htm', 'parent.menufotos');
+    l5.additem('5', 'lobozoo%20(4).htm', 'parent.menufotos');
+    l5.additem('6', 'lobozoo%20(5).htm', 'parent.menufotos');
+    l5.additem('7', 'lobozoo%20(6).htm', 'parent.menufotos');
+  l1.addlist(l5, 'Lobos e Fadas no zoo', 'menu.htm', 'parent.lobozoo');
+    l6 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l6.additem('1', 'acampo.htm', 'parent.menufotos');
+  l1.addlist(l6, 'acampo', 'menu%20(1).htm', 'parent.lobozoo');
+    l7 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l7.additem('1', 'geral.htm', 'parent.menufotos');
+    l7.additem('2', 'geral%20(1).htm', 'parent.menufotos');
+    l7.additem('3', 'geral%20(2).htm', 'parent.menufotos');
+  l1.addlist(l7, 'variadas', 'menu%20(2).htm', 'parent.lobozoo');
+    l8 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l8.additem('1', 'fogo.htm', 'parent.menufotos');
+  l1.addlist(l8, 'Fogos de Conselho', 'menu%20(5).htm', 'parent.lobozoo');
+    l9 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l9.additem('1', '60anos.htm', 'parent.menufotos');
+  l1.addlist(l9, '60 anos', 'menu%20(3).htm', 'parent.lobozoo');
+    l10 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l10.additem('1', 'ferradura.htm', 'parent.menufotos');
+  l1.addlist(l10, 'Ferradura', 'menu%20(4).htm', 'parent.lobozoo');
+    l11 = new namosw_list(layer, false, 200, 17, 'Arial', '1', 'black', 'silver', 0, 'white');
+    l11.additem('1', 'radical.htm', 'parent.menufotos');
+  l1.addlist(l11, 'Radicais', 'menu%20(6).htm', 'parent.lobozoo');
+
+  l1.make(0, 14);
+}
+
+function namosw_ns_resize()
+{
+  window.history.go(0);
+}
+
+// -->
+</script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" OnLoad="namosw_init_list('layer1');" OnResize="namosw_ns_resize();" background="fundoava.gif">
+<p>&nbsp;</p>
+<div id="layer1" style="border-width:1px; border-style:none; width:200px; height:200px; position:absolute; left:10px; top:55px; z-index:1;">
+    <p>&nbsp;</p>
+</div>
+<p>&nbsp;</p>
+</body>
+
+</html>
